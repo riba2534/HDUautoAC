@@ -16,7 +16,7 @@ def search(id):  # 传入的id是题号，寻找是否可以搜到代码,搜到�
     r = requests.get(url)
     r.encoding = r.apparent_encoding
     html = r.text  # 存储这个页面的html代码
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, 'lxml')
     try:
         tbody = soup.find('tbody')  # tbody中包含信息
         tr = tbody.find_all('tr')  # tr里面包含编号
@@ -47,7 +47,7 @@ def get_code(id):  # 用来获得对应题目的代码
         r = requests.get(url)
         r.encoding = r.apparent_encoding
         html = r.text  # 存储这个页面的html代码
-        soup = BeautifulSoup(html, 'html.parser')
+        soup = BeautifulSoup(html, 'lxml')
         try:
             list = soup.find('textarea')
             code = list.get_text()
@@ -128,6 +128,7 @@ if __name__ == '__main__':
         html = r.text
         if (html.find('No such user or wrong password.') != -1):
             print('用户名或密码错误')
+            exit()
         else:
             print('登陆成功')
             CookieID = r.cookies['PHPSESSID']
