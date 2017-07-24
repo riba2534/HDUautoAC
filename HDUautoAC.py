@@ -113,8 +113,8 @@ if __name__ == '__main__':
     #登录
     post_url = 'http://acm.hdu.edu.cn/userloginex.php?action=login'  # 登录的post提交地址
     data = {
-        'username': 'riba2535',
-        'userpass': '123456',
+        'username': '你的账号',
+        'userpass': '你的密码',
         'login': 'Sign In'
     }
     headers = {
